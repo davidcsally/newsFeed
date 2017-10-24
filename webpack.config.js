@@ -1,10 +1,10 @@
-const path = require('path');
+// const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './chrome-ext/frontend/devtools.js',
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
-    filename: './chrome-ext/build/bundle.js',
+    filename: './build/bundle.js',
   },
   // use a load for .jsx and ES6
   module: {
