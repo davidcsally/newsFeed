@@ -5,6 +5,15 @@
     "node": true
   },
   "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
     "func-names": [
       "error",
       "never"
@@ -14,5 +23,8 @@
       "stroustrup"
     ],
     "no-underscore-dangle": 0
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }
