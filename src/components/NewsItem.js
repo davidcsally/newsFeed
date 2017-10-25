@@ -18,13 +18,8 @@ function dateFormatter(string) {
 }
 
 const NewsItem = (props) => {
-  console.log('PROPS ID', props.id);
   const date = dateFormatter(props.createdAt);
   const tags = props.topics.map(a => <Tag key={a.id} name={a.name} />);
-
-  const detailURL = `/articles/${props.id}`;
-  console.log('detailURL', detailURL);
-
 
   return (
     <article className="news-item">
@@ -36,7 +31,6 @@ const NewsItem = (props) => {
       {/* eslint-enable */}
       {<div>{tags}</div>}
       <hr />
-      {/* <p>likes: {props.likesCount} </p> */}
       <div className="social">
         <button className="social-btn">
           <i className="fa fa-thumbs-up" aria-hidden="true" />
