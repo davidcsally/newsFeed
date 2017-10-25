@@ -2,24 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getSelected, clearSelectedArticle } from '../reducers/actions';
+import { requestSingleArticle, clearSelectedArticle } from '../reducers/actions';
 
 class Article extends React.Component {
   componentWillMount() {
-    console.log('# Articles WillMount');
-
     const id = this.props.match.params.id;
-    this.props.getSelected(id);
+    this.props.requestSingleArticle(id);
   }
 
   componentWillUnmount() {
-    console.log('# Articles WillUnMount');
     this.props.clearSelectedArticle();
   }
 
   render() {
     const keys = Object.keys(this.props.selected);
-    console.log('keys:', keys.length);
     if (Object.keys(this.props.selected).length > 0) {
       const selectedArticle = this.props.selected;
       // get all images
@@ -37,8 +33,6 @@ class Article extends React.Component {
           <h6>{selectedArticle.attribution.displayName}</h6>
           <p>{body}</p>
           <a href={selectedArticle.url}>Source</a>
-          {/* <p>tags: {tagsString}</p>
-          <p>likes: {props.likesCount} </p> */}
         </article >
       );
     }
@@ -56,5 +50,5 @@ class Article extends React.Component {
 
 export default connect(
   state => ({ selected: state.selected }),
-  { getSelected, clearSelectedArticle },
+  { requestSingleArticle, clearSelectedArticle },
 )(Article);
