@@ -19,7 +19,7 @@ const dateFormatter = dateString => new Date(dateString)
  *  @param {String} publisher - Organization behind article
  *  @param {Date} createdAt - Article date, as a date string
  *  @param {String} summary - Article Summary
- *  @param {Array[String]} topics - Array of article tags
+ *  @param {Array[Objects]} topics - Array of article tags
  *
  */
 const NewsItem = (props) => {
