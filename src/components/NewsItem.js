@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Tag from './Tag';
 /** Component to represent each item in News Feed
  *
  * Each item contains a
@@ -19,25 +20,46 @@ function dateFormatter(string) {
 const NewsItem = (props) => {
   console.log('PROPS ID', props.id);
   const date = dateFormatter(props.createdAt);
-  const tags = props.topics.map(a => a.name);
-  const tagsString = tags.join(', ');
+  const tags = props.topics.map(a => <Tag key={a.id} name={a.name} />);
 
   const detailURL = `/articles/${props.id}`;
   console.log('detailURL', detailURL);
+
 
   return (
     <article className="news-item">
       <h3>{props.title}</h3>
       <h6>{props.attribution.displayName}</h6>
       <p>{date}</p>
-      {/* eslint-disable */}      
-      <p>{props.summary}...<Link to={`/articles/${props.id}`}>Read More</Link></p>
+      {/* eslint-disable */}
+      <p>{props.summary}...  <Link to={`/articles/${props.id}`}>Read More</Link></p>
       {/* eslint-enable */}
+      {<div>{tags}</div>}
+      <hr />
+      {/* <p>likes: {props.likesCount} </p> */}
+      <div className="social">
+        <button className="social-btn">
+          <i className="fa fa-thumbs-up" aria-hidden="true" />
+          <p className="likes-count">{props.likesCount} Likes</p>
+        </button>
 
-      {/* <a href={props.url}>Read More</a> */}
+        <button className="social-btn">
+          <i className="fa fa-comment" aria-hidden="true"></i>
+          <p className="likes-count">Comment</p>
+        </button>
 
-      <p>tags: {tagsString}</p>
-      <p>likes: {props.likesCount} </p>
+        <button className="social-btn">
+          <i className="fa fa-share" aria-hidden="true"></i>
+          <p className="likes-count">Share</p>
+        </button>
+
+        <button className="social-btn">
+          <i className="fa fa-save" aria-hidden="true"></i>
+          <p className="likes-count">Save</p>
+        </button>
+
+      </div>
+
     </article >
   );
 };
