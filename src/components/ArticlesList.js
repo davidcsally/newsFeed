@@ -8,7 +8,6 @@ import NewsItem from './NewsItem';
 class ArticlesList extends Component {
   constructor() {
     super();
-    console.log('# ArticlesList loaded');
   }
 
   render() {
