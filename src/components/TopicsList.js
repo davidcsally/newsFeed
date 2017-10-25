@@ -14,7 +14,7 @@ class TopicsList extends Component {
   render() {
     return (
       <div className="topics-list">
-        Topics list
+        <h4>Topics</h4>
         {this.props.topics.map(topic => (
           <TopicItem key={topic.id} {...topic} />
         ))}
