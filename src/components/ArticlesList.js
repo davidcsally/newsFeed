@@ -21,7 +21,6 @@ class ArticlesList extends Component {
 
     return (
       <div className="articles-list">
-        articles list
         {this.props.articles.map((article) => {
           for (let i = 0; i < article.topics.length; i += 1) {
             if (followedTopics.includes(article.topics[i].name)) {
