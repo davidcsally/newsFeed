@@ -6,9 +6,10 @@ import TopicItem from './TopicItem';
 
 /** TopicList.js
  *
- * Container for Topic items. This list is subscribed to 
+ * Container for Topic items. This list is subscribed to Redux's topics
+ * Props:
+ *  @param {Array[Objects]} topics - Array of article tags
  */
-
 const TopicsList = props => (
   <div className="topics-list">
     <h4>Topics</h4>
