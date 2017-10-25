@@ -1,8 +1,8 @@
 // import { takeLatest } from 'redux-saga/effects';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics } from '../reducers/actions';
-import { fetchArticles, fetchTopics } from './API';
+import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
+import { fetchArticles, fetchTopics, fetchSingleArticle } from './API';
 
 
 function* getApiArticles(action) {
@@ -33,7 +33,19 @@ function* getApiTopics(action) {
   }
 }
 
+function* getSingleArticle(action) {
+  console.log('# getSingleArticle');
+  try {
+    const data = yield call(fetchSingleArticle, action.data);
+    yield put(recieveSingleArticle(data));
+  }
+  catch (e) {
+    console.log('[getSingleArticle] Error: ', e);
+  }
+}
+
 export default function* mySaga() {
   yield takeLatest(REQUEST_API_ARTICLES, getApiArticles);
   yield takeLatest(REQUEST_API_TOPICS, getApiTopics);
+  yield takeLatest(REQUEST_SINGLE_ARTICLE, getSingleArticle);
 }
