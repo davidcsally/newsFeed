@@ -1,22 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import Tag from './Tag';
-/** Component to represent each item in News Feed
+
+/** Formats date strings into format: 'Jan 1 2017'
+ * @param {string} dateString - a JS date in the form of a string
+ * @returns {Date} - returns a formatted Date
+*/
+const dateFormatter = dateString => new Date(dateString)
+  .toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+/**
+ * NewsItem.js
  *
- * Each item contains a
- * -title
- * -publisher
- * -date
- * -5 line summary
- * -tags
+ * Component to represent each article in feed
+ *  Props:
+ *  @param {String} title - Title of article
+ *  @param {String} publisher - Organization behind article
+ *  @param {Date} createdAt - Article date, as a date string
+ *  @param {String} summary - Article Summary
+ *  @param {Array[String]} topics - Array of article tags
+ *
  */
-
-function dateFormatter(string) {
-  return new Date(string).toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-}
-
 const NewsItem = (props) => {
   const date = dateFormatter(props.createdAt);
   const tags = props.topics.map(a => <Tag key={a.id} name={a.name} />);
@@ -26,7 +31,7 @@ const NewsItem = (props) => {
       <h3>{props.title}</h3>
       <h6>{props.attribution.displayName}</h6>
       <p>{date}</p>
-      {/* eslint-disable */}
+      {/* eslint-disable */} {/* eslint doesn't like <Link> ¯\_(ツ)_/¯ */}
       <p>{props.summary}...  <Link to={`/articles/${props.id}`}>Read More</Link></p>
       {/* eslint-enable */}
       {<div>{tags}</div>}
@@ -38,37 +43,40 @@ const NewsItem = (props) => {
         </button>
 
         <button className="social-btn">
-          <i className="fa fa-comment" aria-hidden="true"></i>
+          <i className="fa fa-comment" aria-hidden="true" />
           <p className="likes-count">Comment</p>
         </button>
 
         <button className="social-btn">
-          <i className="fa fa-share" aria-hidden="true"></i>
+          <i className="fa fa-share" aria-hidden="true" />
           <p className="likes-count">Share</p>
         </button>
 
         <button className="social-btn">
-          <i className="fa fa-save" aria-hidden="true"></i>
+          <i className="fa fa-save" aria-hidden="true" />
           <p className="likes-count">Save</p>
         </button>
-
       </div>
-
     </article >
   );
 };
 
 NewsItem.propTypes = {
-  title: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  likesCount: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
+  likesCount: PropTypes.number.isRequired,
+  summary: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+
   attribution: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
     publisher: PropTypes.string,
   }).isRequired,
+
+  topics: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default NewsItem;
