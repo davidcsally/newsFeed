@@ -1,4 +1,3 @@
-// import { takeLatest } from 'redux-saga/effects';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
