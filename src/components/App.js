@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ArticlesList from './ArticlesList';
 import TopicsList from './TopicsList';
 import store from '../reducers/store';
+import Article from './Article';
 import NavBar from './NavBar';
 
 import { REQUEST_API_ARTICLES, REQUEST_API_TOPICS } from '../reducers/actions';
@@ -15,10 +16,13 @@ export default () => (
       <BrowserRouter>
         <div>
           <NavBar />
-          <Switch>
-            <Route exact path="/" component={ArticlesList} />
-            <Route exact path="/topics" component={TopicsList} />
-          </Switch>
+          <div className="main">
+            <Switch>
+              <Route exact path="/" component={ArticlesList} />
+              <Route exact path="/topics" component={TopicsList} />
+              <Route path="/articles/:id" component={Article} />
+            </Switch>
+          </div>
         </div>
       </BrowserRouter>
     </Provider>
