@@ -7,16 +7,16 @@ import { followTopic, unfollowTopic } from '../reducers/actions';
 const TopicItem = (props) => {
   if (props.isFollowing) {
     return (
-      <div>
+      <div className="topic-item">
         {props.name}
-        <input type="button" value="Unfollow" onClick={() => props.unfollowTopic(props)} />
+        <button type="button" className="btn btn-primary"  onClick={() => props.unfollowTopic(props)}>✅ Following</button>
       </div>
     );
   }
   return (
-    <div>
+    <div className="topic-item">
       {props.name}
-      <input type="button" value="Follow" onClick={() => props.followTopic(props)} />
+      <button type="button" className="btn btn-primary" onClick={() => props.followTopic(props)}>+ Follow</button>
     </div>
   );
 };
