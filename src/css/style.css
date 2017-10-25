@@ -1,0 +1,138 @@
+body {
+  background-color: #fafafa;
+  color: #40383a;
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  margin: 0;
+  width: 100%;
+}
+
+img {
+  max-width:500px;
+}
+
+
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #b5103a;
+  color: #fff;
+  justify-content: center;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  margin-bottom: 30px;
+}
+
+/* Links inside the navbar */
+.navbar li {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar button {
+  margin: 0px 20px 0px 20px;
+  background-color: #b5103a;
+  border-style: none;
+}
+
+.navbar button:hover{
+  background-color: #940229;  
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;  
+}
+
+/* Main content */
+/* Add a top margin to avoid content overlay */
+.main {
+  margin-top: 68px; 
+}
+
+/* ARTICLES PAGE */
+.articles-list {
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.articles-list article {
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.articles-list h4 {
+  text-align: center;
+}
+
+.articles-list h6 {
+  text-transform: uppercase;
+}
+
+.news-item {
+  margin: auto;
+  background-color: #fff;
+  color: #40383a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.62;
+  margin-bottom: 15px;
+  max-width: 45em;
+  overflow: hidden;
+  padding: 1.875em 1.875em 15px;
+  width: 100%;
+  border: 1px solid rgba(64,56,58,.1);
+}
+
+.news-item form {
+  /* float: right; */
+  border: 1px dashed orange;
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+.news-item img {
+  margin: auto;
+}
+
+/* TOPICS PAGE */
+.topics-list {
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 50em;
+  min-width: 32em;
+}
+
+.topics-list h4 {
+  text-align: center;
+}
+
+.topic-item {
+  margin: 0 auto;
+  padding: 5px 5px 5px 5px;
+  background-color: #fff;
+  color: #40383a;
+  margin-bottom: 2px;
+  max-width: 45em;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid rgba(64,56,58,.1);
+}
+
+.topic-item button {
+  margin: 0 auto;
+  padding: 0;  
+  padding-left: 5px;  
+  padding-right: 5px;  
+  float: right;
+  min-width: 105px;
+}
