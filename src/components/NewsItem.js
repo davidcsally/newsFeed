@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /** Component to represent each item in News Feed
  *
@@ -16,28 +17,42 @@ function dateFormatter(string) {
 }
 
 const NewsItem = (props) => {
+  console.log('PROPS ID', props.id);
   const date = dateFormatter(props.createdAt);
+  const tags = props.topics.map(a => a.name);
+  const tagsString = tags.join(', ');
+
+  const detailURL = `/articles/${props.id}`;
+  console.log('detailURL', detailURL);
 
   return (
-    <div>
+    <article className="news-item">
       <h3>{props.title}</h3>
-      <p>{props.attribution.displayName}</p>
+      <h6>{props.attribution.displayName}</h6>
       <p>{date}</p>
-      <p>{props.summary}...</p>
-      <form action={props.url}><input type="submit" value="Read More" /></form>
-    </div>
+      {/* eslint-disable */}      
+      <p>{props.summary}...<Link to={`/articles/${props.id}`}>Read More</Link></p>
+      {/* eslint-enable */}
+
+      {/* <a href={props.url}>Read More</a> */}
+
+      <p>tags: {tagsString}</p>
+      <p>likes: {props.likesCount} </p>
+    </article >
   );
 };
 
 NewsItem.propTypes = {
   title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  likesCount: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   attribution: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
     publisher: PropTypes.string,
   }).isRequired,
-  createdAt: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 export default NewsItem;
