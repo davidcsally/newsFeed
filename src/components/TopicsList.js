@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 import { requestApiTopics } from '../reducers/actions';
 import TopicItem from './TopicItem';
 
+/** TopicList.js
+ *
+ * Container for Topic items. This list is subscribed to 
+ */
 class TopicsList extends Component {
   constructor() {
     super();
-    console.log('# TopicsList Loading');
   }
 
   render() {
@@ -29,6 +32,6 @@ TopicsList.propTypes = {
 };
 
 export default connect(
-  state => ({ topics: state.topics, following: state.following }),
+  state => ({ topics: state.topics }),
   { requestApiTopics },
 )(TopicsList);
