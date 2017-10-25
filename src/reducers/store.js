@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import mySaga from '../sagas/asyncSagas';
 import TopicsReducer from './reducer-topics';
 import ArticlesReducer from './reducer-articles';
+import SelectedReducer from './reducer-selected';
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -14,6 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 const allReducers = combineReducers({
   articles: ArticlesReducer,
   topics: TopicsReducer,
+  selected: SelectedReducer,
 });
 
 export default createStore(
