@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { getArticles } from '../reducers/articles-reducer';
 import PropTypes from 'prop-types';
 
-import { requestApiData } from '../reducers/actions';
+import { requestApiArticles } from '../reducers/actions';
 import NewsItem from './NewsItem';
 
 class ArticlesList extends Component {
@@ -12,21 +11,25 @@ class ArticlesList extends Component {
     console.log('# ArticlesList loaded');
   }
 
-  componentDidMount() {
-    this.props.requestApiData();
-  }
-
   render() {
-    console.log('props:', this.props);
-    setTimeout(() => {
-      console.log('props:', this.props);
-    }, 4000);
+    const followedTopics = [];
+    const keys = Object.keys(this.props.topics);
+    keys.forEach((key) => {
+      const topic = this.props.topics[key];
+      if (topic.isFollowing) followedTopics.push(topic.name);
+    });
 
     return (
       <div className="articles-list">
         articles list
-        {this.props.articles.map(article =>
-          <NewsItem key={article.id} {...article} />)}
+        {this.props.articles.map((article) => {
+          for (let i = 0; i < article.topics.length; i += 1) {
+            if (followedTopics.includes(article.topics[i].name)) {
+              return <NewsItem key={article.id} {...article} />;
+            }
+          }
+        })
+      }
       </div>
     );
   }
@@ -34,10 +37,13 @@ class ArticlesList extends Component {
 
 ArticlesList.propTypes = {
   articles: PropTypes.array.isRequired,
-  requestApiData: PropTypes.func.isRequired,
+  topics: PropTypes.array.isRequired,
+  requestApiArticles: PropTypes.func.isRequired,
 };
 
 export default connect(
-  state => ({ articles: state.articles }),
-  { requestApiData },
+  state => ({ articles: state.articles, topics: state.topics }),
+  { requestApiArticles },
 )(ArticlesList);
+
+// <NewsItem key={article.id} {...article} />)}
