@@ -3,7 +3,7 @@ import { RECIEVE_API_TOPICS, FOLLOW_TOPIC, UNFOLLOW_TOPIC, FOLLOW_ALL_TOPICS } f
 /**
  *  Topics Reducer
  *
- * -Recieve articles (from GET)
+ * -Recieve Topics (from GET)
  * -Follow all topics when app loads
  * -Follow single topic
  * -Unfollow single topic
