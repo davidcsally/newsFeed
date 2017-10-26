@@ -90,15 +90,19 @@ NewsItem.propTypes = {
     publisher: PropTypes.string,
   }).isRequired,
 
+  media: PropTypes.arrayOf({
+    url: PropTypes.string
+  }),
+
   topics: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-// NewsItem.defaultProps = {
-//   selected: { media: [{ url: '' }] },
-// };
+NewsItem.defaultProps = {
+  media: [],
+};
 
 export default NewsItem;
 
