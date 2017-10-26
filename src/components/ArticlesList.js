@@ -46,7 +46,9 @@ const ArticlesList = (props) => {
 };
 
 ArticlesList.propTypes = {
+  /* eslint-disable */
   articles: PropTypes.array.isRequired,
+  /* eslint-enable */
   topics: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
