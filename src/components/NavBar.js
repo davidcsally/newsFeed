@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * NavBar.js
+ *
+ * Persistent navigation bar,
+ * Redirects user to Articles (home) or Topics views
+ */
 const NavBar = () => (
   <nav>
     <ul className="navbar">
