@@ -11,7 +11,7 @@ body {
 }
 
 img {
-  max-width:500px;
+  max-width:100%;
 }
 
 a:hover {
@@ -122,12 +122,21 @@ a:hover {
 
 .news-item img {
   margin: auto;
+  margin-bottom: 20px;  
 }
 
 .news-item hr {
   margin: 15px 0;
   border: none;
   border-bottom: 1px solid rgba(16, 22, 26, 0.15);
+}
+
+.read-more {
+  color: rgba(64,56,58,.5);
+}
+
+.read-more:hover {
+  color: #b5103a;  
 }
 
 .social, .social p {
