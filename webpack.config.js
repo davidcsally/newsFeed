@@ -1,12 +1,12 @@
-// const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['babel-polyfill',
+    './src/index.js'],
   output: {
     filename: './build/bundle.js',
   },
-  // use a load for .jsx and ES6
   module: {
     loaders: [
       {
