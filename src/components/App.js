@@ -2,14 +2,22 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import ArticlesList from './ArticlesList';
-import TopicsList from './TopicsList';
-import store from '../reducers/store';
-import Article from './Article';
 import NavBar from './NavBar';
-
+import Article from './Article';
+import store from '../reducers/store';
+import TopicsList from './TopicsList';
+import ArticlesList from './ArticlesList';
 import { REQUEST_API_ARTICLES, REQUEST_API_TOPICS } from '../reducers/actions';
 
+/**
+ * App.js
+ *
+ * Application shell. Fires off requests on load to GET all articles and topics
+ * Contains three main routes:
+ *  -List of Articles
+ *  -List of Topics
+ *  -Single Article
+ */
 export default () => (
   <div>
     <Provider store={store}>
@@ -29,5 +37,6 @@ export default () => (
   </div>
 );
 
+// when App loads, fetch data
 store.dispatch({ type: REQUEST_API_ARTICLES });
 store.dispatch({ type: REQUEST_API_TOPICS });
