@@ -50,7 +50,7 @@ class Article extends React.Component {
           <h3>{selectedArticle.title}</h3>
           <h6>{selectedArticle.attribution.displayName}</h6>
           <p>{body}</p>
-          <a href={selectedArticle.url}>Source</a>
+          <a className="read-more" href={selectedArticle.url}>Source</a>
         </article >
       );
     }
