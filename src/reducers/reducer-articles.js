@@ -1,10 +1,18 @@
 import { RECEIVE_API_ARTICLES } from './actions';
 
+/**
+ * Article Reducer
+ *
+ * -Recieve articles (fromGet)... and that's about it!
+ */
 export default (state = [], { type, data }) => {
   switch (type) {
-    case RECEIVE_API_ARTICLES:
+    case RECEIVE_API_ARTICLES: {
       return data.data;
-    default:
+    }
+
+    default: {
       return state;
+    }
   }
 };
