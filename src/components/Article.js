@@ -4,21 +4,38 @@ import { connect } from 'react-redux';
 
 import { requestSingleArticle, clearSelectedArticle } from '../reducers/actions';
 
+/**
+ * Article.js
+ *
+ * Displays a detailed, single article.
+ * Component is SUBSCRIBED to Redux's 'selected' object and updates when GET req completes
+ * Props:
+ *  @param {Func} requestSingleArticle - dispatch to request & save article to store
+ *  @param {Func} clearSelectedArticle - dispatch to remove article when view is unmounted
+ *  @param {Object} selected - Store object holding article data
+ *  @param {Int} id - article ID, for REST call, comes through in router: 'match.params'
+ */
 class Article extends React.Component {
+  // GET article on mount
   componentWillMount() {
+    /* eslint-disable */
     const id = this.props.match.params.id;
+    /* eslint-enable */
     this.props.requestSingleArticle(id);
   }
 
+  // Remove article on mount, so that previous article
+  // does not show up when next article is selected
   componentWillUnmount() {
     this.props.clearSelectedArticle();
   }
 
   render() {
-    const keys = Object.keys(this.props.selected);
+    // if article was retrieved, display article, else say loading
     if (Object.keys(this.props.selected).length > 0) {
       const selectedArticle = this.props.selected;
-      // get all images
+
+      // extract all images
       const images = this.props.selected.media.map(image => (
         <img src={image.url} alt="alt text" key={image.id} />
       ));
@@ -26,6 +43,7 @@ class Article extends React.Component {
       // get rid of all <p> tags
       const body = selectedArticle.body.replace(/<p>/g, '').replace(/<\/p>/g, '');
 
+      // render article
       return (
         <article className="news-item">
           {images}
@@ -36,17 +54,32 @@ class Article extends React.Component {
         </article >
       );
     }
+
+    // Loading screen while GET request is working
     return (
       <div>LOADING...</div>
     );
   }
 }
 
+Article.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 
-// Article.propTypes = {
-//   id: PropTypes.number.isRequired,
-// };
-// export default Article;
+  requestSingleArticle: PropTypes.func.isRequired,
+  clearSelectedArticle: PropTypes.func.isRequired,
+
+  /* eslint-disable*/ // object too finicky
+  selected: PropTypes.object,
+  /* eslint-enable */
+};
+
+Article.defaultProps = {
+  selected: {},
+};
 
 export default connect(
   state => ({ selected: state.selected }),

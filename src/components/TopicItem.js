@@ -8,7 +8,7 @@ import { followTopic, unfollowTopic } from '../reducers/actions';
  * TopicItem.js
  *
  * Each Topic Item represents one topic that the user can follow.
- * Topic items are subscribed to an array of followed topics
+ * Topic items are SUBSCRIBED to an array of followed topics
  * Props:
  *  @param {String} name - Topic Name
  *  @param {Bool} isFollowing - Flag if user is / is not following
