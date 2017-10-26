@@ -22,5 +22,5 @@ export default createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
-// then run the saga
+// run sagas
 sagaMiddleware.run(mySaga);
