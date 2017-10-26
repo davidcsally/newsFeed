@@ -24,7 +24,7 @@ const dateFormatter = dateString => new Date(dateString)
  */
 const NewsItem = (props) => {
   const date = dateFormatter(props.createdAt);
-  const tags = props.topics.map(a => <Tag key={a.id} name={a.name} />);
+  const tags = props.topics.map(a => <Link to="/topics"><Tag key={a.id} name={a.name} /></Link>);
 
   return (
     <article className="news-item">
@@ -33,8 +33,11 @@ const NewsItem = (props) => {
       <p>{date}</p>
       {/* eslint-disable */} {/* eslint doesn't like <Link> ¯\_(ツ)_/¯ */}
       <p>{props.summary}...  <Link to={`/articles/${props.id}`}>Read More</Link></p>
-      {/* eslint-enable */}
-      {<div>{tags}</div>}
+      <div className="tags-list">
+        <Link to="/topics"><i className="fa fa-tag" aria-hidden="true" /></Link>
+        {/* eslint-enable */}
+        {tags}
+      </div>
       <hr />
       <div className="social">
         <button className="social-btn">
