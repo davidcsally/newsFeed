@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Tag from './Tag';
 
 /** Formats date strings into format: 'Jan 1 2017'
