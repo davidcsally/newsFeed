@@ -1,20 +1,22 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
 import { fetchArticles, fetchTopics, fetchSingleArticle } from '../API/ApiMethods';
+import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
 
-function* getApiArticles(action) {
+/** fetch articles from API, then put data in store */
+function* getApiArticles() {
   try {
     // do api call
     const data = yield call(fetchArticles);
     yield put(receiveApiArticles(data));
   }
   catch (e) {
-    console.log('error: ', e);
+    console.log('[getApiArticles] Error: ', e);
   }
 }
 
-function* getApiTopics(action) {
+/** fetch topics from API, then put data in store */
+function* getApiTopics() {
   let initialFetch = true;
   try {
     const data = yield call(fetchTopics);
@@ -26,10 +28,11 @@ function* getApiTopics(action) {
     }
   }
   catch (e) {
-    console.log('Error: ', e);
+    console.log('[getApiTopics] Error: ', e);
   }
 }
 
+/** fetch article from API, then put data in store */
 function* getSingleArticle(action) {
   try {
     const data = yield call(fetchSingleArticle, action.data);
