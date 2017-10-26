@@ -22,17 +22,31 @@ const dateFormatter = dateString => new Date(dateString)
  *  @param {String} summary - Article Summary
  *  @param {Array[Objects]} topics - Array of article tags
  */
+
 const NewsItem = (props) => {
+  /* eslint-disable *//* eslint doesn't like <Link> ¯\_(ツ)_/¯ */
   const date = dateFormatter(props.createdAt);
-  const tags = props.topics.map(a => <Link to="/topics"><Tag key={a.id} name={a.name} /></Link>);
+  const tags = props.topics.map(a => (
+    <Link key={a.id} to="/topics">
+      <Tag key={a.id} name={a.name} />
+    </Link>
+  ));
+  /* eslint-enable */
+  console.log(props)
+  const images = props.media.map(image => (
+    <img src={image.url} alt="alt text" key={image.id} />
+  ));
+  console.log('imgs', images);
+
 
   return (
     <article className="news-item">
+      {images}
       <h3>{props.title}</h3>
       <h6>{props.attribution.displayName}</h6>
       <p>{date}</p>
       {/* eslint-disable */} {/* eslint doesn't like <Link> ¯\_(ツ)_/¯ */}
-      <p>{props.summary}...  <Link to={`/articles/${props.id}`}>Read More</Link></p>
+      <p>{props.summary}...  <Link className="read-more" to={`/articles/${props.id}`}>Read More</Link></p>
       <div className="tags-list">
         <Link to="/topics"><i className="fa fa-tag" aria-hidden="true" /></Link>
         {/* eslint-enable */}
@@ -81,6 +95,10 @@ NewsItem.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
 };
+
+// NewsItem.defaultProps = {
+//   selected: { media: [{ url: '' }] },
+// };
 
 export default NewsItem;
 
