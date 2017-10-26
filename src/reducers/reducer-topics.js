@@ -1,14 +1,24 @@
 import { RECIEVE_API_TOPICS, FOLLOW_TOPIC, UNFOLLOW_TOPIC, FOLLOW_ALL_TOPICS } from './actions';
 
+/**
+ *  Topics Reducer
+ *
+ * -Recieve articles (from GET)
+ * -Follow all topics when app loads
+ * -Follow single topic
+ * -Unfollow single topic
+ */
 export default (state = [], { type, data }) => {
   switch (type) {
     case RECIEVE_API_TOPICS:
       return data.data;
 
+    // set all topics to 'following'
     case FOLLOW_ALL_TOPICS: {
       const processedData = data.data.map((item) => {
-        item.isFollowing = true;
-        return item;
+        const copy = item;
+        copy.isFollowing = true;
+        return copy;
       });
       return processedData;
     }
@@ -33,7 +43,6 @@ export default (state = [], { type, data }) => {
           break;
         }
       }
-
       return copy;
     }
 
