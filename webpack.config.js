@@ -1,11 +1,14 @@
-const { resolve } = require('path');
+const path = require('path');
+/* eslint-disable */ // shhh eslint, we are using webpack
 const webpack = require('webpack');
+/* eslint-enable */
 
 module.exports = {
   entry: ['babel-polyfill',
     './src/index.js'],
   output: {
-    filename: './build/bundle.js',
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
