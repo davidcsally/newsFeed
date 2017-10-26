@@ -13,7 +13,6 @@ const NavBar = () => (
       {/* eslint-disable */}
       <button type="button" className="btn btn-primary"><Link to="/">Home</Link></button>
       <button type="button" className="btn btn-primary"><Link to="/topics">Topics</Link></button>
-      <li>Articles Feed</li>
       {/* eslint-enable */}
     </ul>
   </nav>
