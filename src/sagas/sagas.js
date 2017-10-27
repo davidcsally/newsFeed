@@ -1,7 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchArticles, fetchTopics, fetchSingleArticle } from '../API/ApiMethods';
-import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
+// import { REQUEST_SINGLE_ARTICLE, REQUEST_API_ARTICLES, receiveApiArticles, REQUEST_API_TOPICS, recieveApiTopics, followAllTopics, recieveSingleArticle } from '../reducers/actions';
+import {
+  followAllTopics,
+  recieveApiTopics,
+  receiveApiArticles,
+  recieveSingleArticle,
+} from '../reducers/action-creators';
+
+import {
+  REQUEST_API_TOPICS,
+  REQUEST_API_ARTICLES,
+  REQUEST_SINGLE_ARTICLE,
+} from '../reducers/constants';
 
 /** fetch articles from API, then put data in store */
 function* getApiArticles() {

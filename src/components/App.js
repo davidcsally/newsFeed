@@ -7,7 +7,7 @@ import Article from './Article';
 import store from '../reducers/store';
 import TopicsList from './TopicsList';
 import ArticlesList from './ArticlesList';
-import { REQUEST_API_ARTICLES, REQUEST_API_TOPICS } from '../reducers/actions';
+import { REQUEST_API_ARTICLES, REQUEST_API_TOPICS } from '../reducers/constants';
 
 /**
  * App.js

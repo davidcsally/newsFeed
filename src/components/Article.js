@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { requestSingleArticle, clearSelectedArticle } from '../reducers/actions';
+import { requestSingleArticle, clearSelectedArticle } from '../reducers/action-creators';
 
 /**
  * Article.js
