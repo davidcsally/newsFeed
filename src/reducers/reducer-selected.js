@@ -1,4 +1,4 @@
-import { RECIEVE_SINGLE_ARTICLE, CLEAR_SELECTED_ARTICLE } from './actions';
+import { RECIEVE_SINGLE_ARTICLE, CLEAR_SELECTED_ARTICLE } from './constants';
 
 /**
  *  Selected Article Reducer

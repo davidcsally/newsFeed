@@ -1,4 +1,4 @@
-import { RECEIVE_API_ARTICLES } from './actions';
+import { RECEIVE_API_ARTICLES } from './constants';
 
 /**
  * Article Reducer

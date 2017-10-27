@@ -1,4 +1,7 @@
-import { RECIEVE_API_TOPICS, FOLLOW_TOPIC, UNFOLLOW_TOPIC, FOLLOW_ALL_TOPICS } from './actions';
+import {
+  RECIEVE_API_TOPICS,
+  FOLLOW_TOPIC, UNFOLLOW_TOPIC,
+  FOLLOW_ALL_TOPICS } from './constants';
 
 /**
  *  Topics Reducer
