@@ -1,47 +1,41 @@
-import configureStore from 'redux-mock-store';
+import {
+  receiveApiArticles,
+  requestApiArticles,
+  recieveApiTopics,
+  followTopic,
+  unfollowTopic,
+} from '../src/reducers/action-creators';
 
-import { receiveApiArticles, recieveApiTopics, followTopic, unfollowTopic } from '../src/reducers/actions';
-import { RECEIVE_API_ARTICLES, RECIEVE_API_TOPICS, FOLLOW_TOPIC, UNFOLLOW_TOPIC } from '../src/reducers/actions';
+import {
+  RECEIVE_API_ARTICLES,
+  REQUEST_API_ARTICLES,
+  RECIEVE_API_TOPICS,
+  FOLLOW_TOPIC,
+  UNFOLLOW_TOPIC,
+} from '../src/reducers/constants';
 
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+  // TODO test reducers
 
-// Initialize mockstore with empty state
-const initialState = {};
-const store = mockStore(initialState);
+// *********************
+// ** ACTION CREATORS **
+// *********************
+describe('Action Creators', () => {
+  it('should create an action to request articles ', () => {
+    const expectedAction = { type: REQUEST_API_ARTICLES };
+    expect(requestApiArticles()).toEqual(expectedAction);
+  });
 
-// // Dispatch the action
-// store.dispatch(addTodo())
-
-//   // Test if your store dispatched the expected actions
-//   const actions = store.getActions()
-//   const expectedPayload = { type: 'ADD_TODO' }
-//   expect(actions).toEqual([expectedPayload])
-
-describe('Articles Reducer', () => {
-  it('should save articles into store', () => {
-    const articles = [
-      { name: 'Article 1', id: 1 },
-      { name: 'Article 2', id: 2 },
-      { name: 'Article 3', id: 3 },
-      { name: 'Article 4', id: 4 },
-    ];
+  it('should create an action to recieve articles ', () => {
+    const articles = [{ name: 'Article 1', id: 1 }];
     const expectedAction = {
       type: RECEIVE_API_ARTICLES,
       data: articles,
     };
     expect(receiveApiArticles(articles)).toEqual(expectedAction);
   });
-});
 
-describe('Topics Reducer', () => {
-  it('should save topics into store', () => {
-    const topics = [
-      { name: 'Topic 1', id: 1 },
-      { name: 'Topic 2', id: 2 },
-      { name: 'Topic 3', id: 3 },
-      { name: 'Topic 4', id: 4 },
-    ];
+  it('should create an action to recieve topics ', () => {
+    const topics = [{ name: 'Topic 1', id: 1 }];
     const expectedAction = {
       type: RECIEVE_API_TOPICS,
       data: topics,
@@ -49,10 +43,10 @@ describe('Topics Reducer', () => {
     expect(recieveApiTopics(topics)).toEqual(expectedAction);
   });
 
-  it('should follow a single topic', () => {
+  it('should create an action to follow a single topic', () => {
     const topic = {
-      name: 'the name of a topic',
-      id: 1234,
+      name: 'topic1',
+      id: 1,
     };
     const expectedAction = {
       type: FOLLOW_TOPIC,
@@ -61,10 +55,10 @@ describe('Topics Reducer', () => {
     expect(followTopic(topic)).toEqual(expectedAction);
   });
 
-  it('should unfollow a single topic', () => {
+  it('should create an action to unfollow a single topic', () => {
     const topic = {
-      name: 'the name of a topic',
-      id: 1234,
+      name: 'topic1',
+      id: 1,
     };
     const expectedAction = {
       type: UNFOLLOW_TOPIC,
@@ -73,3 +67,7 @@ describe('Topics Reducer', () => {
     expect(unfollowTopic(topic)).toEqual(expectedAction);
   });
 });
+
+// **************
+// ** REDUCERS **
+// **************
