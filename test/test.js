@@ -1,7 +1,22 @@
-// import * as actionsArticles from '../src/reducers/reducer-articles';
+import configureStore from 'redux-mock-store';
+
 import { receiveApiArticles, recieveApiTopics, followTopic, unfollowTopic } from '../src/reducers/actions';
 import { RECEIVE_API_ARTICLES, RECIEVE_API_TOPICS, FOLLOW_TOPIC, UNFOLLOW_TOPIC } from '../src/reducers/actions';
 
+const middlewares = [];
+const mockStore = configureStore(middlewares);
+
+// Initialize mockstore with empty state
+const initialState = {};
+const store = mockStore(initialState);
+
+// // Dispatch the action
+// store.dispatch(addTodo())
+
+//   // Test if your store dispatched the expected actions
+//   const actions = store.getActions()
+//   const expectedPayload = { type: 'ADD_TODO' }
+//   expect(actions).toEqual([expectedPayload])
 
 describe('Articles Reducer', () => {
   it('should save articles into store', () => {
