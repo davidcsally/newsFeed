@@ -32,12 +32,9 @@ const NewsItem = (props) => {
     </Link>
   ));
   /* eslint-enable */
-  console.log(props)
   const images = props.media.map(image => (
     <img src={image.url} alt="alt text" key={image.id} />
   ));
-  console.log('imgs', images);
-
 
   return (
     <article className="news-item">
@@ -90,9 +87,9 @@ NewsItem.propTypes = {
     publisher: PropTypes.string,
   }).isRequired,
 
-  media: PropTypes.arrayOf({
-    url: PropTypes.string
-  }),
+  media: PropTypes.arrayOf(PropTypes.shape({
+    url: PropTypes.string,
+  })),
 
   topics: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
