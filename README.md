@@ -1,5 +1,5 @@
 # Sample News Feed 
-### React16 news feed from JSON API, using React Router (4), Redux, & Redux Saga
+### React16 news feed from JSON API, using React Router (4), Redux, Redux Saga, and Webpack + Webpack dev server
 
 1. First install with ``npm install``
 
