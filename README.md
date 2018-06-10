@@ -1,5 +1,5 @@
-# newsFeed
-### React news feed from JSON API, using Router, Redux, & Redux Saga
+# Sample News Feed 
+### React16 news feed from JSON API, using React Router (4), Redux, & Redux Saga
 
 1. First install with ``npm install``
 
@@ -10,3 +10,10 @@
 ### Usage
 The application will initiate a GET request, and render the articles it recieves.
 Users may choose which articles they see by follow / unfollowing article tags.
+
+### Testing
+To run test suites, run ``npm test``
+
+### Notes
+This project requires a private key to access the data api
+
