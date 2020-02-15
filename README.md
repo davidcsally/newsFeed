@@ -1,4 +1,7 @@
 # Sample News Feed 
+
+This is a project I built as a coding challenge for a client back in 2017. 
+
 ### React16 news feed from JSON API, using React Router (4), Redux, Redux Saga, and Webpack + Webpack dev server
 
 1. First install with ``npm install``
